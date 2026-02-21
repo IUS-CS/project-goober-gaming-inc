@@ -1,1 +1,4 @@
-
+# Project Vision
+Project Goober Gaming Inc is a team of five college students. We are developing a turn-based combat video game as part of our System and Analysis Design course.The goal of this project is to practice how real software systems are planned and built. Our vision is to create a working and easy-to-understand game that shows we can design a system, write code as a team, and handle user input, game logic, and program flow. By the end of the semester, the program should be stable, playable. 
+# Goober Gaming
+The software will be a console-based battle simulator where a player fights an enemy using simple decision-based actions. The player can either do a basic attack or heal, while the enemy automatically attacks with a random amount of damage. The program will display the health of both characters, ask the user for input, make sure the input is validm and end the fight when either the player or the enemy reaches zero health. 

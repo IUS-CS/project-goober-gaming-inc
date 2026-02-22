@@ -4,12 +4,12 @@ While everyone will help coding and testing, the more programming-heavy task wil
 complete the project successfully and on time.
 
 ### Tynan Anfield
-*Product Owner / Scrum Master
+Product Owner / Scrum Master
 Tynan volunteered to organize the overall flow of the project. He will help coordinate meetings, keep track of progress, 
 and make sure the team stays on schedule throughout the semester.
 
 ### Andy Gomez
-*Programmer / Tester
+Programmer / Tester
 Andy has volunteered to help test the product. He will run the program, look for bugs or errors, and make sure the game works correctly
 after changes are made. He will also help verify user input is handled properly and that the battle system behaves as expected. 
 

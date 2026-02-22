@@ -17,7 +17,7 @@ Andy has volunteered to help test the product. He will run the program, look for
 
 Ronalyn will be responsibel for documeting the projecting. She will write and organize the project report, keep track of requirements, and make sure each part of the system is clearly explained. She will coordinate with Andy during testing phase(s) throughout the project.
 
-## Sara Nguyen & Brielle Dickens ###
+### Sara Nguyen & Brielle Dickens ###
 **Programmers**
 
 Sara and Brielle will be responsible for writing the program's code and classes. They will also help debug issues and add new features as the team decides they are needed. 

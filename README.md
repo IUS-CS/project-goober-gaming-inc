@@ -32,7 +32,7 @@ When the program starts, a player and an enemy are created.
 
 ### GameHandler
 
-Runs the game loop, asks for input, and decids when the game ends. 
+Runs the game loop, asks for input, and decides when the game ends. 
 
 ### Player
 
@@ -40,11 +40,11 @@ Stores the player's health. The player can attack, heal, and take damage.
 
 ### Enemy
 
-Stores enemy health an attacks with random amount of damage. 
+Stores enemy health and attacks with random amount of damage. 
 
 ### How to Run
 
-***1.*** Open an terminal in the project folder.
+***1.*** Open a terminal in the project folder.
 
 ***2.*** Compile the program.
 

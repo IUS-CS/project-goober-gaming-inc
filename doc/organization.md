@@ -15,7 +15,7 @@ Andy has volunteered to help test the product. He will run the program, look for
 ### Ronalyn Gonzalez ###
 **Documenter**
 
-Ronalyn will be responsibel for documeting the projecting. She will write and organize the project report, keep track of requirements, and make sure each part of the system is clearly explained. She will coordinate with Andy during testing phase(s) throughout the project.
+Ronalyn will be responsible for documeting the projecting. She will write and organize the project report, keep track of requirements, and make sure each part of the system is clearly explained. She will coordinate with Andy during testing phase(s) throughout the project.
 
 ### Sara Nguyen & Brielle Dickens ###
 **Programmers**

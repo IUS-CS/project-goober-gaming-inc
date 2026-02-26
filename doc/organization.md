@@ -1,6 +1,6 @@
 # Roles
 Our group has decided to split the work as evenly as possible among all members. 
-While everyone will help coding and testing, the more programming-heavy task will mainly be handled by the teams members who the most experience so we can complete the project successfully and on time.
+While everyone will help coding and testing, the more programming-heavy task will mainly be handled by the team members who have the most experience so we can complete the project successfully and on time.
 
 ### Tynan Anfield ###
 **Product Owner / Scrum Master**
@@ -15,10 +15,10 @@ Andy has volunteered to help test the product. He will run the program, look for
 ### Ronalyn Gonzalez ###
 **Documenter**
 
-Ronalyn will be responsible for documeting the projecting. She will write and organize the project report, keep track of requirements, and make sure each part of the system is clearly explained. She will coordinate with Andy during testing phase(s) throughout the project.
+Ronalyn will be responsible for documenting the project. She will write and organize the project report, keep track of requirements, and make sure each part of the system is clearly explained. She will coordinate with Andy during the testing phase(s) throughout the project.
 
 ### Sara Nguyen & Brielle Dickens ###
 **Programmers**
 
-Sara and Brielle will be responsible for writing the program's code and classes. They will also help debug issues and add new features as the team decides they are needed. 
+Sara and Brielle will be responsible for writing the program's codes and classes. They will also help debug issues and add new features as the team decides they are needed. 
 

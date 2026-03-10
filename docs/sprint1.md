@@ -29,17 +29,21 @@ and the .gitignore file.
 
 **What worked best** 
 
-**a** Discord app for communicating within the team. 
+**a.** Discord app for communicating within the team. 
 
-**b** The project tab helped each team breakdown tasks into smaller manageable tasks.
+**b.** The project tab helped each team breakdown tasks into smaller manageable tasks.
 
-**c** Clear understanding of what each member should be doing in order to contribute.  
+**c.** Clear understanding of what each member should be doing in order to contribute.  
 
 **What can we improve on**
 
-**a** Communicate when a team member is stuck on a task. 
+**a.** Communicate when a team member is stuck on a task. 
 
-**b** Finish tasks so testing can be done in a timely manner. 
+**b.** Finish tasks so testing can be done in a timely manner. 
+
+**Response to issues/comments posted**
+
+We addressed the concern about uneven stats by agreeing that whenever someone gets stuck on a task, they will communicate openly with the group so another team member can step in and help. 
 
 ## Operational Commitments
 

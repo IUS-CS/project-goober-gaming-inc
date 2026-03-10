@@ -30,18 +30,38 @@ and the .gitignore file.
 **What worked best** 
 
 **a** Discord app for communicating within the team. 
+
 **b** The project tab helped each team breakdown tasks into smaller manageable tasks.
+
 **c** Clear understanding of what each member should be doing in order to contribute.  
 
 **What can we improve on**
 
 **a** Communicate when a team member is stuck on a task. 
+
 **b** Finish tasks so testing can be done in a timely manner. 
 
 ## Operational Commitments
 
-As a team, we will 
+As a team, we will communicate clearly, divide work fairly, support each other, and deliver a well-designed Java console game on time. We'll combine our strengths, share are knowledge, defeat bugs together, and complete the mission of building a fully playable Java turn-based console game. 
 
-## Upcoming Sprint Planning
+## Upcoming Sprint Planning:
+
+**1 . Create Room Class** 
+
+**2. Create RoomHandler Class**
+
+**3. Update GameHandler Class**
+
+**4. Write sprint.md**
+
+**4. Write designpatterns.md**
+
+**5. Test New Design** 
+
+**6. Document results**
+
+
+
 
 

@@ -96,6 +96,31 @@ public class GameHandler {
             - This maybe updated to reset player hp to the max immediately
             after the encounter.
         */
+       System.out.println("Encouter an enemy");
+
+        player.setHP(player.getMaxHp());
+
+        while (enemy.getHp() > 0 && player.getHp() > 0) {
+
+            // Player attacks
+            enemy.takeDamage(player.getAttack());
+            System.out.println("You hit the enemy");
+
+            if (enemy.getHp() <= 0){
+                System.out.println("The enemy is dead");
+            }
+
+            // Enemy attacks
+            player.takeDamage(enemy.getAttack());
+            System.out.println("Enemy attacks you");
+
+            if (player.getHp()<=0){
+                System.out.println("You're dead.");
+                break;
+            }
+        
+        }
+
        
     }
 }

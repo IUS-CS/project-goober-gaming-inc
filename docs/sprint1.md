@@ -2,6 +2,18 @@
 
 Date: 2026-02-25
 
+Members present: 
+
+* Tynan Anfield
+
+* Brielle Dickens
+
+* Andy Gomez
+
+* Ronalyn Gonzalez
+
+* Sara Nguyen
+
 ## Demonstration
 
 This sprint, we completed:
@@ -22,6 +34,7 @@ for actions, applying attacks and healing, showing HP each turn, and ending the 
 character dies. 
 
 **2.** Successful testing of the prototype.
+
 **3.** The required documentations including organization.md, proposal.md, README.md, LICENSE file, AUTHORS file,
 and the .gitignore file. 
 
@@ -47,7 +60,7 @@ We addressed the concern about uneven stats by agreeing that whenever someone ge
 
 ## Operational Commitments
 
-As a team, we will communicate clearly, divide work fairly, support each other, and deliver a well-designed Java console game on time. We'll combine our strengths, share are knowledge, defeat bugs together, and complete the mission of building a fully playable Java turn-based console game. 
+As a team, we will communicate clearly, divide work fairly, support each other, and deliver a well-designed Java console game on time. We'll combine our strengths, share our knowledge, defeat bugs together, and complete the mission of building a fully playable Java turn-based console game. 
 
 ## Upcoming Sprint Planning:
 

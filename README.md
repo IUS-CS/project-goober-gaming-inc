@@ -1,4 +1,4 @@
-# Goober Gaming (Turned-Based Battle Game)
+# Goober Gaming (Turn-Based Battle Game)
 
 ## About This Game
 

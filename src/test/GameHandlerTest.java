@@ -1,73 +1,42 @@
 package com.rpg.rpg;
 
-import org.junit.jupiter.api.Test;
-import java.io.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.util.NoSuchElementException;
-import static org.junit.jupiter.api.Assertions.*;
 
-class GameHandlerTest {
+import org.junit.jupiter.api.Test;
 
-    private String runWithInput(String input) {
+public class GameHandlerTest {
+
+    @Test
+    public void testRunQuitsImmediately() {
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
 
-        ByteArrayInputStream fakeIn =
-                new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
-        ByteArrayOutputStream outBuffer = new ByteArrayOutputStream();
-        PrintStream fakeOut = new PrintStream(outBuffer, true, StandardCharsets.UTF_8);
+        ByteArrayInputStream testIn =
+                new ByteArrayInputStream("quit\n".getBytes(StandardCharsets.UTF_8));
+        ByteArrayOutputStream testOut = new ByteArrayOutputStream();
 
         try {
-            System.setIn(fakeIn);
-            System.setOut(fakeOut);
+            System.setIn(testIn);
+            System.setOut(new PrintStream(testOut));
 
-            GameHandler handler = new GameHandler();
+            GameHandler game = new GameHandler();
+            game.run();
 
-            try {
-                handler.run(); 
-            } catch (NoSuchElementException eof) {
+            String output = testOut.toString();
 
-            }
-
-            return outBuffer.toString(StandardCharsets.UTF_8);
+            assertTrue(output.contains("Welcome to the RPG!"));
+            assertTrue(output.contains("Move using north, east, south, or west."));
+            assertTrue(output.contains("Type quit to end the game."));
+            assertTrue(output.contains("Thanks for playing!"));
         } finally {
             System.setIn(originalIn);
             System.setOut(originalOut);
         }
-    }
-
-    @Test
-    void invalidInput_reprompts() {
-        // Provide only invalid input, so it will print the invalid message,
-        String printed = runWithInput("x\n");
-
-        assertTrue(printed.contains("Invalid input"),
-                "Should print invalid input message");
-        assertTrue(printed.contains("Choose action") || printed.contains("Enter"),
-                "Should prompt user for 1 or 2");
-    }
-
-    @Test
-    void choosing1_printsBasicAttackMessage() {
-        // Provide one valid choice then let it run out of input.
-        String printed = runWithInput("1\n");
-
-        // GameHandler should print something like:
-        // "You used Basic Attack ..." (or similar)
-        assertTrue(
-                printed.contains("Basic Attack") || printed.contains("attack"),
-                "Should indicate the basic attack happened"
-        );
-    }
-
-    @Test
-    void choosing2_printsHealMessage() {
-        // Provide one valid choice then let it run out of input.
-        String printed = runWithInput("2\n");
-
-        assertTrue(
-                printed.contains("heal") || printed.contains("Healed") || printed.contains("healed"),
-                "Should indicate the heal happened"
-        );
     }
 }

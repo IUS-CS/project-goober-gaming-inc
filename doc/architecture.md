@@ -246,12 +246,6 @@ The system works by having `GameHandler` control everything.
 
 ---
 
-## Example Room Layout
-
-        North
-          |
-West -- South -- East
-
 
 
 

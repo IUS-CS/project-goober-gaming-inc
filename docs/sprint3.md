@@ -49,12 +49,13 @@ fully playable Java turn-based console game.
 
 Sprint 4 Focused: 
 
-**1.** Test the product by providing a detailed explanation of how the code is tested.
+**1.** Test the product by providing a detailed explanation of how the code is tested. 
 
-**2.** Write sprint3.md.
+**2.** Write testing.md
 
-**3.** Discuss if we should add more features into the application. Asses if there is enough time to add 
-more features. 
+**3.** Write sprint3.md.
+
+**4.** Discuss if we should add more features into the application. Asses if there is enough time to add more features. 
 
 
 

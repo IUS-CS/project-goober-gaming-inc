@@ -1,126 +1,163 @@
 package com.rpg.rpg;
 
+import java.lang.reflect.Field;
 import java.util.Scanner;
 
 public class GameHandler {
 
+    private final Character player;
+    private final RoomHandler roomHandler;
+    private final Scanner scanner;
+
+    public GameHandler() {
+        player = new Character();
+        roomHandler = new RoomHandler();
+        scanner = new Scanner(System.in);
+    }
+
     public void run() {
+        roomHandler.createMap();
 
-        /*  Loops infinitely: 
-            - Prints the valid (non-null) exists in the current room.
-             - Takes user input (must be "north", "east", "south", or "west")
-             - Attempts to change the current room using RoomHandler's changeRoom method
-            If the changeRoom succeeded:
-            - An acknowledgement will be printed.
-            - An encounter will be run if the new rooms ranEncounter boolean is false.
-         */
-        // Creates a Player and an Enemy
+        if (roomHandler.currentRoom == null) {
+            System.out.println("Game could not start.");
+            return;
+        }
 
-        Character player = new Character();
+        System.out.println("Welcome to the RPG!");
+        System.out.println("Move using north, east, south, or west.");
+        System.out.println("Type quit to end the game.");
+        System.out.println();
+
+        // Run the starting room encounter once.
+        roomHandler.currentRoom.enterRoom();
+
+        while (!player.isDead()) {
+            System.out.println();
+            System.out.println("==============================");
+            System.out.println("Player HP: " + player.getHp());
+            System.out.println("Available exits:");
+            printValidExits(roomHandler.currentRoom);
+
+            System.out.print("Enter direction: ");
+            String input = scanner.nextLine().trim().toLowerCase();
+
+            while (!isValidDirection(input) && !input.equals("quit")) {
+                System.out.print("Invalid input. Enter north, east, south, west, or quit: ");
+                input = scanner.nextLine().trim().toLowerCase();
+            }
+
+            if (input.equals("quit")) {
+                System.out.println("Thanks for playing!");
+                break;
+            }
+
+            Room nextRoom = roomHandler.currentRoom.getExit(input);
+
+            if (nextRoom == null) {
+                roomHandler.changeRoom(input);
+                continue;
+            }
+
+            boolean firstVisit = !nextRoom.ranEncounter;
+            boolean monsterRoom = isMonsterRoom(nextRoom);
+
+            boolean moved = roomHandler.changeRoom(input);
+
+            if (moved) {
+                System.out.println("You moved " + input + ".");
+
+                if (firstVisit && monsterRoom) {
+                    fightEnemy();
+                }
+            }
+
+            if (player.isDead()) {
+                System.out.println("Game Over!");
+                break;
+            }
+        }
+    }
+
+    private void fightEnemy() {
         Enemy enemy = new Enemy();
 
-        Scanner scanner = new Scanner(System.in);
+        System.out.println();
+        System.out.println("A wild enemy attacks!");
 
-        while (true) {
-            // Prints HP of the Player and the Enemy
-            System.out.println("\n==============================");
+        while (!player.isDead() && !enemy.isDead()) {
+            System.out.println();
+            System.out.println("==============================");
             System.out.println("Player HP: " + player.getHp());
             System.out.println("Enemy  HP: " + enemy.getHp());
-            System.out.println("==============================");
+            System.out.println("1. Basic Attack");
+            System.out.println("2. Heal");
+            System.out.print("Choose an action: ");
 
-            // Prints the valid (non-null) exists in the current room.
-            System.out.println("Exists in the current room: north, east, south, west");
+            String input = scanner.nextLine().trim();
 
-            // Takes user input (must be "north", "east", "south", or "west")
-            System.out.println("Choose an exist: ");
-            exist = scanner.nextLine().toLowerCase();
-
-            //Attempts to change the current room using RoomHandler's changeRoom method
-            boolean change = RoomHandler.changeRoom(exist);
-
-            // If the changeRoom succeeded
-            if (change){
-                System.out.println("You have moved to "+ exist);
-            } 
-            if (!currentRoom.getEncounter()){
-                runEncounter();
-            }
-            
-
-            // Prompts and receives user input
-            String choice;
-            while (true) {
-                System.out.print("Choose action: (1) Basic Attack  (2) Heal : ");
-                choice = scanner.nextLine().trim();
-
-                if (choice.equals("1") || choice.equals("2")) {
-                    break;
-                }
-                System.out.println("Invalid input. This isn't rocket science. Please enter 1 or 2.. or else.");
+            while (!input.equals("1") && !input.equals("2")) {
+                System.out.print("Invalid input. Enter 1 for basic attack or 2 for heal: ");
+                input = scanner.nextLine().trim();
             }
 
-            // Performs corresponding action
-            if (choice.equals("1")) {
-                int dmg = player.basicAttack(enemy);
-                System.out.println("You used Basic Attack and dealt " + dmg + " damage!");
+            if (input.equals("1")) {
+                int damage = player.basicAttack(enemy);
+                System.out.println("Player attacks for " + damage + " damage.");
             } else {
                 player.heal();
-                System.out.println("You healed yourself! Good move!");
+                System.out.println("Player heals. Current HP: " + player.getHp());
             }
 
-            // Ends the fight if the Enemy is dead before the Enemy acts
             if (enemy.isDead()) {
-                System.out.println("\nEnemy HP: 0");
-                System.out.println("You win! The enemy has been defeated. Huzzah!");
+                System.out.println("Enemy defeated! Huzzah!");
                 break;
             }
 
-            // Damages player by the value returned from the enemy's random action
-            int enemyDmg = enemy.randomAttack(player);
-            System.out.println("Enemy dealt " + enemyDmg + " damage to you!");
+            int enemyDamage = enemy.randomAttack(player);
+            System.out.println("Enemy attacks for " + enemyDamage + " damage.");
 
-            // Ends the fight if the Player is dead immediately after the Enemy acts
             if (player.isDead()) {
-                System.out.println("\nPlayer HP: 0");
-                System.out.println("You lose! You have been defeated. You fought valiantly. You'll get 'em next time, Tiger.");
+                System.out.println("The player has been defeated! RIP, you'll get 'em next time!");
                 break;
             }
         }
-
-        scanner.close();
     }
-    public void runEncounter(){
 
-        /* The current infinite loop should be mostly reused here.
-        - "encounter" is a simple combat
-            - This maybe updated to reset player hp to the max immediately
-            after the encounter.
-        */
-       System.out.println("Encouter an enemy");
+    private boolean isValidDirection(String direction) {
+        return direction.equals("north")
+                || direction.equals("east")
+                || direction.equals("south")
+                || direction.equals("west");
+    }
 
-        player.setHP(player.getMaxHp());
-
-        while (enemy.getHp() > 0 && player.getHp() > 0) {
-
-            // Player attacks
-            enemy.takeDamage(player.getAttack());
-            System.out.println("You hit the enemy");
-
-            if (enemy.getHp() <= 0){
-                System.out.println("The enemy is dead");
-            }
-
-            // Enemy attacks
-            player.takeDamage(enemy.getAttack());
-            System.out.println("Enemy attacks you");
-
-            if (player.getHp()<=0){
-                System.out.println("You're dead.");
-                break;
-            }
-        
+    private void printValidExits(Room currentRoom) {
+        if (currentRoom.getExit("north") != null) {
+            System.out.println("- north");
         }
+        if (currentRoom.getExit("east") != null) {
+            System.out.println("- east");
+        }
+        if (currentRoom.getExit("south") != null) {
+            System.out.println("- south");
+        }
+        if (currentRoom.getExit("west") != null) {
+            System.out.println("- west");
+        }
+    }
 
-       
+    private boolean isMonsterRoom(Room room) {
+        try {
+            Field encounterField = Room.class.getDeclaredField("encounter");
+            encounterField.setAccessible(true);
+            Object encounter = encounterField.get(room);
+            return encounter instanceof MonsterEncounterStrat;
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        GameHandler game = new GameHandler();
+        game.run();
     }
 }

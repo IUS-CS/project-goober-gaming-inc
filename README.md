@@ -2,37 +2,55 @@
 
 ## About This Game
 
-This is a small game made for our System Analysis and Design course. 
-In the game, the player fights an enemy by choosing actions each turn.
+This is a small RPG-style game made for our System Analysis and Design course. 
+In the game, the player explores different rooms and fights enemies through an **encounter system**.
 
-This project is created to practice coding skills and teamwork.
+The game includes **room navigation**, allowing the player to move between rooms using directions. Each room may contain an enemy encounter, which only happens once per room. 
+
+This project was created to practice coding skills and teamwork.
 
 ## How to Play
 
-When the program starts, a player and an enemy are created.
+When the program starts, the player is placed into a room. 
 
-### Each turn:
+### Movement:
 
-- The game shows the health (HP) of both characters
-- Player/user gets choose what to do
+Type a direction to move between rooms:
+- `north`
+- `south`
+- `east`
+- `west`
 
-### Press:
+### When entering a room
+- An enemy encounter may occur
+
+### During each turn in combat
+- The game shows the health (HP) of both the player & the enemy.
+- The player chooses what action to take.
+
+### Controls
+
 - ***1*** to attack
 - ***2*** to heal
 
 ## What the Program Does
 
-- Shows player and enemy health
-- Lets the user choose an action
-- Checks for valid input
-- Applies damage or healing
-- Ends the game when someone loses
+- Generates & connects rooms for exploration
+- Allows movement between rooms using directional commands
+- Triggers enemy encounters when entering rooms
+- Ensures encounters only happen once per room
+- Displays player to attack or heal
+- Validates user input
+- Applies damage & healing
+- Continues running after encounters end
+- Ends the game **only when the player loses (HP reaches 0)**
+
 
 ## Main Parts of the Program
 
 ### GameHandler
 
-Runs the game loop, asks for input, and decides when the game ends. 
+Runs the main game loop, handles user input, manages room navigation, and decides when the game ends.
 
 ### Player
 
@@ -42,13 +60,23 @@ Stores the player's health. The player can attack, heal, and take damage.
 
 Stores enemy health and attacks with random amount of damage. 
 
+### Room
+
+Represents each room in the game. Rooms are connected in different directions (nort, east, south, west) and may contain an encounter.
+
+### RoomHandler/RoomFactory
+
+Handles the creation and setup of rooms. This part of the program connects rooms together and controls how the navigation system works. 
+
 ### How to Run
 
 ***1.*** Open a terminal in the project folder.
 
 ***2.*** Compile the program.
 
-***3.*** Run the game.
+***3.*** Run the game:
+
+java GameHandler
 
 ## Team Members
 
@@ -64,7 +92,7 @@ Runs the game and looks for bugs.
 
 Writes the report and keeps documentation updated. 
 
-***Sara Nguyen & Brielle Dickens*** -Programmers
+***Brielle Dickens & Sara Nguyen*** -Programmers
 
 Writes the code, fix errors, and add features.
 
